@@ -36,6 +36,7 @@ python-dotenv 0.13.0
 Everything is done using the reactions on the embed messages.
 
 Type `!help` to get usage info
+
 ![Type !help to get usage info](https://cdn.discordapp.com/attachments/720380826415792159/723590539144069201/help.PNG)
 
 Type `!setup <mail channel> <resolved channel>` to setup and allow incoming mail
