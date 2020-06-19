@@ -26,17 +26,6 @@ async def on_ready():
 
 client.remove_command("help")
 
-@client.command()
-async def setup(ctx, open_queries, resolved_queries):
-    fields = [open_queries, resolved_queries]
-    try:
-        with open("channels.csv", 'w', newline='', encoding="utf-8") as fp:
-            writer = csv.writer(fp, delimiter=",")
-            writer.writerow(fields)
-        client.mod_mail_channel = open_queries
-        client.resolved_mail_channel = resolved_queries
-    except Exception as e:
-        print(e)
 
 extensions = ['cogs.ModMail']
 

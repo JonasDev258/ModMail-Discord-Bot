@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import datetime
-
+import csv
 
 class ModMail(commands.Cog):
 
@@ -96,6 +96,27 @@ class ModMail(commands.Cog):
                               f"again using the :x: reaction from the resolved channel.", inline=False)
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def setup(self, ctx, open_queries, resolved_queries):
+        fields = [open_queries, resolved_queries]
+        try:
+            with open("channels.csv", 'w', newline='', encoding="utf-8") as fp:
+                writer = csv.writer(fp, delimiter=",")
+                writer.writerow(fields)
+            self.bot.mod_mail_channel = open_queries
+            self.bot.resolved_mail_channel = resolved_queries
+        except Exception as e:
+            print(e)
+
+    @setup.error
+    async def setup_error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            embed = discord.Embed(title=":x: Oops!", description="You are missing a required argument.",
+                                  colour=discord.Colour.red())
+            embed.add_field(name=":grey_question: Syntax",
+                            value=f"[!setup <open mail channel ID> <resolved mail channel ID>](https://discord.com)")
+            embed.set_footer(text=ctx.author, icon_url=ctx.author.avatar_url_as(format="png", size=1024))
+            await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(ModMail(bot))
