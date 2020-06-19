@@ -31,3 +31,37 @@ The default command prefix is `!` which can be changed by editing the values in 
 ### Requirements
 Python 3.5.3+
 python-dotenv 0.13.0 
+
+### Usage
+Everything is done using the reactions on the embed messages.
+
+Type `!help` to get usage info
+![Type !help to get usage info](https://cdn.discordapp.com/attachments/720380826415792159/723590539144069201/help.PNG)
+
+Type `!setup <mail channel> <resolved channel>` to setup and allow incoming mail
+
+![Setup Example](https://cdn.discordapp.com/attachments/720380826415792159/723590835970637894/setup.PNG)
+
+Incoming Mail Example. Can be resolved or discarded with the reactions.
+
+![Incoming Mail](https://cdn.discordapp.com/attachments/720380826415792159/723591343091220490/mail.PNG)
+
+A new mail marked as resolved will be sent to the resolved channel. 
+
+![Resolved Mail](https://cdn.discordapp.com/attachments/720380826415792159/723591388423520407/resolved.PNG)
+
+
+Cancelled Mail Example. A new mail marked as cancelled will be sent to the resolved channel. 
+
+![Cancelled Mail](https://cdn.discordapp.com/attachments/720380826415792159/723592705313079296/cancelled.PNG)
+
+Reopen a solved mail. A query  marked as resolved can be reopened again using the reactions.
+
+![Reopen solved Mail](https://cdn.discordapp.com/attachments/720380826415792159/723593156054220970/reopened_a_solved.PNG)
+
+Reopen a cancelled mail. A query  marked as cancelled can be reopened again using the reactions.
+
+![Reopen cancelled Mail](https://cdn.discordapp.com/attachments/720380826415792159/723593167915712522/reopen_cancelled.PNG)
+
+
+
