@@ -25,20 +25,6 @@ class ModMail(commands.Cog):
             await message.add_reaction(cross_mark)
 
 
-        if message.content.startswith("!help"):
-            embed = discord.Embed(title=f"Set Up Instructions", description="This bot only contains one command.",
-                                  colour=discord.Colour.red())
-            embed.add_field(name=f"Setup Command", value=f"Type `!setup <incoming mail channel> <resolved queries channel>`\n"
-                                                         f"Where incoming mail channel = the channel where you want to receive DMs\n"
-                                                         f"And where the resolved channel is where you want resolved or cancelled "
-                                                         f"queries to be sent", inline=False)
-            embed.add_field(name="Actions", value=f"A message can be marked as completed using the :white_check_mark: reaction."
-                                                  f"A new mail message can be cancelled using the :x: reaction. Both these reactions will send the "
-                                                  f"mail to the resolved channel, and mark the status of it as resolved. A resolved query can be opened "
-                                                  f"again using the :x: reaction from the resolved channel.", inline=False)
-            channel = message.guild.get_channel(message.channel.id)
-            await channel.send(embed=embed)
-
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         print(payload)
@@ -92,6 +78,23 @@ class ModMail(commands.Cog):
                         await msg.add_reaction(cross_mark)
 
                         await message.delete()
+
+
+    @commands.command()
+    async def help(self, ctx):
+        embed = discord.Embed(title=f"Set Up Instructions", description="This bot only contains one command.",
+                              colour=discord.Colour.red())
+        embed.add_field(name=f"Setup Command",
+                        value=f"Type `!setup <incoming mail channel> <resolved queries channel>`\n"
+                              f"Where incoming mail channel = the channel where you want to receive DMs\n"
+                              f"And where the resolved channel is where you want resolved or cancelled "
+                              f"queries to be sent", inline=False)
+        embed.add_field(name="Actions",
+                        value=f"A message can be marked as completed using the :white_check_mark: reaction."
+                              f"A new mail message can be cancelled using the :x: reaction. Both these reactions will send the "
+                              f"mail to the resolved channel, and mark the status of it as resolved. A resolved query can be opened "
+                              f"again using the :x: reaction from the resolved channel.", inline=False)
+        await ctx.send(embed=embed)
 
 
 def setup(bot):
