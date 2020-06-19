@@ -10,9 +10,9 @@ class ModMail(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
-        mod_channel = self.bot.get_channel(int(self.bot.mod_mail_channel))
-        if message.guild is None and not message.author.bot:
 
+        if message.guild is None and not message.author.bot:
+            mod_channel = self.bot.get_channel(int(self.bot.mod_mail_channel))
             ts = datetime.datetime.now().timestamp()
             embed = discord.Embed(title=f":e_mail: **New DM to Bot**", colour=discord.Colour.red(),
                                   timestamp=datetime.datetime.utcfromtimestamp(ts))
@@ -105,6 +105,10 @@ class ModMail(commands.Cog):
                 writer.writerow(fields)
             self.bot.mod_mail_channel = open_queries
             self.bot.resolved_mail_channel = resolved_queries
+            embed = discord.Embed(title=f"Setup Successful", description=f"Mail Channel: {open_queries}\n"
+                                                                         f"Resolved Channel: {resolved_queries}",
+                                  colour=discord.Colour.red())
+            await ctx.send(embed=embed)
         except Exception as e:
             print(e)
 
