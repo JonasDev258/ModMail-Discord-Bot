@@ -19,12 +19,10 @@ Make sure to have a bot account first. You will need your token from the develop
 You can run the `!help` command from withing discord once the bot is running for further instructions.
 
 The bot contains a setup command `!setup <incoming mail channel> <resolved mail channel>`
-This command takes 2 arguments. You need to create 2 channels, and pass it the ID value of the channel.
+This command takes 2 arguments. You need to create 2 channels, and either mention the channel or pass its ID.
 
-To get the ID value you need to enable developer mode through discord: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-
 
-These values will be stored in the `channels.csv` file. Alternatively you can open this file, and manually
-add the channel_id values to its first line, seperated by a comma. Ex. `12345677894544646,5463874758745874`
+These values will be stored in the `channels.json` file.
 
 The default command prefix is `!` which can be changed by editing the values in the `.env` file.
 
