@@ -170,6 +170,5 @@ class ModMail(commands.Cog):
             embed.set_footer(text=ctx.author, icon_url=ctx.author.avatar_url_as(format="png", size=1024))
             await ctx.send(embed=embed)
 
-def setup(bot):
-    bot.add_cog(ModMail(bot))
+bot.login('Your token here')
 
